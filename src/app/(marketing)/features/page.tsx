@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { AnimateIn } from "@/components/shared/animate-in";
 
 export const metadata: Metadata = {
   title: "Features",
@@ -69,56 +70,65 @@ export default function FeaturesPage() {
       {/* Hero */}
       <section className="bg-gray-50 py-section-sm lg:py-section">
         <div className="section-container text-center">
-          <h1 className="mb-4 text-4xl font-bold lg:text-hero-sm">
-            Everything You Need to Run a WhatsApp TV
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-500">
-            Nine powerful features designed specifically for Nigerian WhatsApp
-            TV businesses. No bloat, just what you need.
-          </p>
+          <AnimateIn direction="up">
+            <h1 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-hero-sm">
+              Everything You Need to Run a WhatsApp TV
+            </h1>
+            <p className="mx-auto max-w-2xl text-base text-gray-500 sm:text-lg">
+              Nine powerful features designed specifically for Nigerian WhatsApp
+              TV businesses. No bloat, just what you need.
+            </p>
+          </AnimateIn>
         </div>
       </section>
 
       {/* Feature Deep Dives */}
       <section className="py-section-sm lg:py-section">
-        <div className="section-container space-y-24">
+        <div className="section-container space-y-16 sm:space-y-24">
           {features.map((feature, i) => (
-            <div
+            <AnimateIn
               key={feature.title}
-              className={`flex flex-col items-center gap-12 lg:flex-row ${
-                i % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
+              direction={i % 2 === 0 ? "left" : "right"}
+              delay={0.1}
             >
-              <div className="flex-1">
-                <h2 className="mb-4 text-3xl font-bold">{feature.title}</h2>
-                <p className="text-lg text-gray-500">{feature.description}</p>
-              </div>
-              <div className="flex-1">
-                <div className="flex h-64 items-center justify-center rounded-2xl bg-gray-100">
-                  <p className="text-gray-400">
-                    {feature.title} illustration
-                  </p>
+              <div
+                className={`flex flex-col items-center gap-8 sm:gap-12 lg:flex-row ${
+                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                <div className="flex-1">
+                  <h2 className="mb-3 text-2xl font-bold sm:mb-4 sm:text-3xl">{feature.title}</h2>
+                  <p className="text-base text-gray-500 sm:text-lg">{feature.description}</p>
+                </div>
+                <div className="w-full flex-1">
+                  <div className="flex h-48 items-center justify-center rounded-2xl bg-gray-100 sm:h-64">
+                    <p className="text-gray-400">
+                      {feature.title} illustration
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimateIn>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-green-50 py-section-sm lg:py-section">
-        <div className="section-container text-center">
-          <h2 className="mb-4 text-3xl font-bold">
-            Start using all these features today
-          </h2>
-          <p className="mx-auto mb-8 max-w-xl text-gray-500">
-            Plans start at just N10,000/month. No contracts, cancel anytime.
-          </p>
-          <a href="/pricing" className="btn-gradient text-lg">
-            View Pricing
-          </a>
-        </div>
-      </section>
+      <AnimateIn direction="up">
+        <section className="bg-green-50 py-section-sm lg:py-section">
+          <div className="section-container text-center">
+            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">
+              Start using all these features today
+            </h2>
+            <p className="mx-auto mb-8 max-w-xl text-sm text-gray-500 sm:text-base">
+              Plans start at just N10,000/month. No contracts, cancel anytime.
+            </p>
+            <a href="/pricing" className="btn-gradient text-base sm:text-lg">
+              View Pricing
+            </a>
+          </div>
+        </section>
+      </AnimateIn>
     </>
   );
 }

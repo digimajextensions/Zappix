@@ -14,9 +14,13 @@ const isPublicRoute = createRouteMatcher([
   "/legal(.*)",
   "/sign-in(.*)",
   "/sign-up(.*)",
+  "/ads(.*)",
   "/api/webhooks(.*)",
   "/api/inngest(.*)",
   "/api/cron(.*)",
+  "/api/trpc/adSlot.getPublicSlots(.*)",
+  "/api/trpc/adSlot.createBooking(.*)",
+  "/api/trpc/adSlot.verifyBookingPayment(.*)",
   "/sitemap.xml",
   "/robots.txt",
 ]);

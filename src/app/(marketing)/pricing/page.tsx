@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { PricingCards } from "@/components/marketing/pricing-cards";
 import { PricingComparison } from "@/components/marketing/pricing-comparison";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/shared/animate-in";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -14,13 +15,15 @@ export default function PricingPage() {
       {/* Hero */}
       <section className="bg-gray-50 py-section-sm lg:py-section">
         <div className="section-container text-center">
-          <h1 className="mb-4 text-4xl font-bold lg:text-hero-sm">
-            Simple, Honest Pricing
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-500">
-            No hidden fees, no surprises. Pick a plan that fits your WhatsApp
-            TV business and start growing today.
-          </p>
+          <AnimateIn direction="up">
+            <h1 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-hero-sm">
+              Simple, Honest Pricing
+            </h1>
+            <p className="mx-auto max-w-2xl text-base text-gray-500 sm:text-lg">
+              No hidden fees, no surprises. Pick a plan that fits your WhatsApp
+              TV business and start growing today.
+            </p>
+          </AnimateIn>
         </div>
       </section>
 
@@ -28,22 +31,26 @@ export default function PricingPage() {
       <PricingCards />
 
       {/* Feature Comparison Table */}
-      <section className="py-section-sm lg:py-section">
-        <div className="section-container">
-          <h2 className="mb-12 text-center text-3xl font-bold">
-            Compare Plans
-          </h2>
-          <PricingComparison />
-        </div>
-      </section>
+      <AnimateIn direction="up" delay={0.1}>
+        <section className="py-section-sm lg:py-section">
+          <div className="section-container overflow-x-auto">
+            <h2 className="mb-12 text-center text-2xl font-bold sm:text-3xl">
+              Compare Plans
+            </h2>
+            <PricingComparison />
+          </div>
+        </section>
+      </AnimateIn>
 
       {/* Pricing FAQ */}
       <section className="bg-gray-50 py-section-sm lg:py-section">
         <div className="section-container">
-          <h2 className="mb-12 text-center text-3xl font-bold">
-            Pricing FAQ
-          </h2>
-          <div className="mx-auto max-w-2xl space-y-6">
+          <AnimateIn direction="up">
+            <h2 className="mb-8 text-center text-2xl font-bold sm:mb-12 sm:text-3xl">
+              Pricing FAQ
+            </h2>
+          </AnimateIn>
+          <StaggerContainer className="mx-auto max-w-2xl space-y-4 sm:space-y-6">
             {[
               {
                 q: "Can I change plans later?",
@@ -66,34 +73,37 @@ export default function PricingPage() {
                 a: "Yes! Save 17% when you pay annually. That is 2 months free.",
               },
             ].map((faq) => (
-              <div
+              <StaggerItem
                 key={faq.q}
-                className="rounded-xl border border-gray-200 bg-white p-6"
               >
-                <h3 className="mb-2 font-semibold">{faq.q}</h3>
-                <p className="text-gray-500">{faq.a}</p>
-              </div>
+                <div className="rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
+                  <h3 className="mb-2 text-sm font-semibold sm:text-base">{faq.q}</h3>
+                  <p className="text-sm text-gray-500 sm:text-base">{faq.a}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Enterprise CTA */}
-      <section className="py-section-sm lg:py-section">
-        <div className="section-container text-center">
-          <h2 className="mb-4 text-3xl font-bold">Need a custom plan?</h2>
-          <p className="mx-auto mb-8 max-w-xl text-gray-500">
-            Running an agency or managing more than 15 accounts? Let us talk
-            about a custom plan that fits your needs.
-          </p>
-          <a
-            href="mailto:hello@zappix.ng"
-            className="btn-gradient text-lg"
-          >
-            Contact Sales
-          </a>
-        </div>
-      </section>
+      <AnimateIn direction="up">
+        <section className="py-section-sm lg:py-section">
+          <div className="section-container text-center">
+            <h2 className="mb-4 text-2xl font-bold sm:text-3xl">Need a custom plan?</h2>
+            <p className="mx-auto mb-8 max-w-xl text-sm text-gray-500 sm:text-base">
+              Running an agency or managing more than 15 accounts? Let us talk
+              about a custom plan that fits your needs.
+            </p>
+            <a
+              href="mailto:hello@zappix.ng"
+              className="btn-gradient text-base sm:text-lg"
+            >
+              Contact Sales
+            </a>
+          </div>
+        </section>
+      </AnimateIn>
     </>
   );
 }
